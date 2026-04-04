@@ -1,7 +1,9 @@
 .container {
   max-width: 720px;
   text-align: center;
-  padding: 2.5rem 2rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 h1 {
@@ -45,6 +47,10 @@ button {
   box-shadow: 0 -1px 0 rgba(0,0,0,0.04);
   backdrop-filter: blur(6px);
     border-top: 1px solid rgba(0,0,0,0.08);
+
+      position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .site-footer-home {
@@ -79,9 +85,10 @@ button {
 }
 
 .footer-left {
-  max-width: 400px;
+  max-width:400px;
   color: #555;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .footer-left strong {

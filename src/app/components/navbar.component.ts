@@ -119,6 +119,9 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
     display: flex;
     align-items: center;
     gap: 1.8rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
 .links button {

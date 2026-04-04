@@ -22,10 +22,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   `,
     styles: [`
     .container {
-      max-width: 720px;
+      max-width: 520px;
       text-align: center;
-        justify-content: flex-start;
-  color: #e8e6e3;
+      justify-content: flex-start;
+      color: #e8e6e3;
+      padding: 20px 28px;
     }
 
 .hero-subtitle {

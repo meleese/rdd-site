@@ -1396,15 +1396,26 @@ export interface ConflictData {
   <div>Coverage</div>
 </div>
 <div class="data-row" *ngFor="let row of filteredRows">
-  <div class="col col-conflict">
+  <div class="col col-conflict" data-label="War">
     <div class="conflict-name">{{ row.conflict }}</div>
     <div class="subtext">{{ row.subConflicts }}</div>
   </div>
 
-  <div class="col">{{ row.yearStart }}–{{ row.yearEnd }}</div>
-  <div class="col">{{ formatNumber(row.keywordMentions) }}</div>
-  <div class="col">{{ formatNumber(row.totalArticleCount) }}</div>
-  <div class="col">{{ formatPercent(row.keywordProportion) }}</div>
+  <div class="col" data-label="Years">
+    {{ row.yearStart }}–{{ row.yearEnd }}
+  </div>
+
+  <div class="col" data-label="Refugee Mentions">
+    {{ formatNumber(row.keywordMentions) }}
+  </div>
+
+  <div class="col" data-label="Articles">
+    {{ formatNumber(row.totalArticleCount) }}
+  </div>
+
+  <div class="col" data-label="Coverage">
+    {{ formatPercent(row.keywordProportion) }}
+  </div>
 </div>
 <div class="data-intro">
   <p class="meta">
@@ -1505,6 +1516,26 @@ export interface ConflictData {
   color: #777;
   line-height: 1.4;
 }
+
+.conflict-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.subtext {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+
+  /* prevent huge overflow on mobile */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
   `]
 })
 export class DatasetsComponent {
