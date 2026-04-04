@@ -1,0 +1,192 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f7f7f7;
+  --text: #111;
+  --muted-text: #555;
+
+  --border: #e5e5e5;
+
+  /* 🎯 Your accent tones */
+  --primary: #2c4a6b;
+  --primary-soft: #e6edf3;
+  --accent: #6b7c8f;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+body {
+  background:
+    linear-gradient(
+      rgba(44,74,107,0.15),
+      rgba(44,74,107,0.7)
+    ),
+    url('/assets/unhcr-map-border-crossing-grey.jpg') center/cover no-repeat;
+
+  background-attachment: fixed;
+}
+
+h1, h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+a, .accent {
+  color: #8b0000;
+}
+
+.icon {
+  stroke: #2c4a6b;
+  opacity: 0.8;
+}
+
+.app-container {
+    min-height: calc(100vh - 80px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  position: relative;
+  background: rgba(15, 25, 35, 0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.hero-content {
+  color: #cfd6dc;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.02) 60%
+  );
+  pointer-events: none;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.fade {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.divider {
+  width: 60%;
+  margin: 1.8rem auto;
+  border: none;
+  border-top: 1px solid var(--primary-soft);
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+}
+
+button {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stats strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #111;
+}
+
+.stats span {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.value {
+    font-family: Georgia, serif;
+}
+
+.page-wrapper.standard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+    background: rgba(255,255,255,0.92);
+}
+
+.content-inner {
+  max-width: 1100px;
+  margin-left: 2rem;
+}
+  
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

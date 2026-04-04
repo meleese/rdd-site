@@ -1,0 +1,50 @@
+<div class="app-container">
+    <app-navbar 
+    [currentView]="currentView"
+    (navigate)="setView($event)">
+  </app-navbar>
+  <div 
+  class="page-wrapper"
+  [class.home]="currentView === 'home'"
+  [class.standard]="currentView !== 'home'"
+  >
+
+  <div class="content" [class.fade]="animationState === 'active'">
+    <div class="content-inner">
+    <app-home *ngIf="currentView === 'home'"></app-home>
+    <app-about *ngIf="currentView === 'about'"></app-about>
+    <app-datasets *ngIf="currentView === 'datasets'"></app-datasets>
+  </div>
+  </div>
+  </div>
+  <footer *ngIf="currentView === 'home'" class="site-footer-home">
+  <div class="footer-inner">
+
+    <div class="footer-left">
+      <strong>© 2026 Refugee Discourse Database</strong>
+    </div>
+
+    <div class="footer-meta">
+      <a href="mailto:inquiries@refugeediscoursedatabase.org?subject=Refugee%20Discourse%20Database%20Inquiry">
+        Contact Us
+      </a>
+    </div>
+
+  </div>
+</footer>
+  <footer *ngIf="currentView !== 'home'" class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-left">
+      <strong>© 2026 Refugee Discourse Database</strong>
+    </div>
+
+    <div class="footer-meta">
+      <a href="mailto:inquiries@refugeediscoursedatabase.org?subject=Refugee%20Discourse%20Database%20Inquiry">
+        Contact Us
+      </a>
+    </div>
+
+  </div>
+</footer>
+</div>
