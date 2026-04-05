@@ -1500,22 +1500,6 @@ export interface ConflictData {
   gap: 1.5rem;
   align-items: center;
 }
-  .data-intro {
-  margin-bottom: 1.75rem;
-}
-
-.data-intro .lead {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.data-intro .meta {
-  font-size: 0.8rem;
-  color: #777;
-  line-height: 1.4;
-}
 
 .conflict-name {
   font-weight: 600;

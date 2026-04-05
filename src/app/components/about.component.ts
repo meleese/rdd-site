@@ -17,9 +17,8 @@ import { Component } from '@angular/core';
   <h2>Data Sources</h2>
 
   <p class="description">
-    Our data has been sourced from a growing variety of providers of current and historical global media coverage.
+    Our data is sourced from a growing variety of providers of current and historical global media coverage.
   </p>
-
 </div>
   ` ,
     styles: [`

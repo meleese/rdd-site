@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from './components/navbar.component';
 import { HomeComponent } from './components/home.component';
 import { AboutComponent } from './components/about.component';
-import { AccessComponent } from './components/access.component';
 import { CommonModule } from '@angular/common';
 import { DatasetsComponent } from './components/datasets.component';
 
