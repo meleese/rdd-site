@@ -76,7 +76,6 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   gap: 0.6rem;
 }
 
-/* GRAPH MARK */
 .mark {
   display: flex;
   align-items: flex-end;
@@ -90,19 +89,16 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   display: block;
 }
 
-/* “RDD” encoded as data bars */
-.mark span:nth-child(1) { height: 10px; }   /* R (lower) */
-.mark span:nth-child(2) { height: 18px; }  /* D */
-.mark span:nth-child(3) { height: 18px; }  /* D */
+.mark span:nth-child(1) { height: 10px; }
+.mark span:nth-child(2) { height: 18px; }
+.mark span:nth-child(3) { height: 18px; }
 
-/* divider */
 .divider {
   width: 1px;
   height: 28px;
   background: rgba(0,0,0,0.15);
 }
 
-/* stacked text */
 .text {
   display: flex;
   flex-direction: column;
