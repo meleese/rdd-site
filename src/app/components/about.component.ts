@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
     <h2>Refugee Discourse Database</h2>
 
     <p class="description">
-      The Refugee Discourse Database formed out of research conducted for the book <i>Bad Refugees: Bad Refugees: Geopolitics, Stigma and Forced Migration (Mandić).</i>
+      The Refugee Discourse Database formed out of research conducted for the book <i>Bad Refugees: Geopolitics, Stigma and Forced Migration (Mandić).</i>
     </p>
 
   <h2>Data Sources</h2>
