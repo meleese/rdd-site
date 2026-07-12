@@ -65,7 +65,7 @@ import { Component } from '@angular/core';
           <span class="figure-number">Figure 2.</span>
           The timeline of overlapping conflicts across years, since 1914.        
           <span class="figure-credit">
-
+          Created by Meleese Bremer.
         </span>
         </figcaption>
       </figure>
