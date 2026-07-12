@@ -55,15 +55,15 @@ import { Component } from '@angular/core';
       <figure class="figure figure-wide">
         <div class="figure-surface">
         <img
-            src="assets/overview/refugee-episodes.jpg"
-            alt="The distribution of conflicts across years, since 1914."
+            src="assets/overview/refugee-episodes-timeline.png"
+            alt="Timeline of verlapping conflicts across years, since 1914."
             class="figure-image"
         />
         </div>
 
         <figcaption>
           <span class="figure-number">Figure 2.</span>
-          The distribution of conflicts across years, since 1914.        
+          The timeline of overlapping conflicts across years, since 1914.        
           <span class="figure-credit">
 
         </span>
@@ -72,7 +72,7 @@ import { Component } from '@angular/core';
 
      <div class="article-body">
         <p>
-          This distribution shows a timeline of conflicts producing refugee episodes since 1914. 
+          This timeline shows conflicts producing refugee episodes since 1914. 
           Increases in overlapping conflicts are observed in recent decades.
         </p>
       </div>
