@@ -28,9 +28,9 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
           </button>
 
           <button 
-            [class.active]="currentView === 'about'"
-            (click)="navigate.emit('about')">
-            About
+            [class.active]="currentView === 'overview'"
+            (click)="navigate.emit('overview')">
+            Overview
           </button>
 
           <button 
@@ -180,6 +180,6 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   `]
 })
 export class NavbarComponent {
-  @Input() currentView!: 'home' | 'about' | 'datasets';
-  @Output() navigate = new EventEmitter<'home' | 'about' | 'datasets'>();
+  @Input() currentView!: 'home' | 'overview' | 'about' | 'datasets';
+  @Output() navigate = new EventEmitter<'home' | 'overview' | 'about' | 'datasets'>();
 }

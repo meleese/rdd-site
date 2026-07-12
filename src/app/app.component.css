@@ -42,7 +42,7 @@ button {
   background: rgba(255,255,255,0.85);
   border-top: 1px solid rgba(0,0,0,0.06);
 
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #555;
   box-shadow: 0 -1px 0 rgba(0,0,0,0.04);
   backdrop-filter: blur(6px);
@@ -75,19 +75,19 @@ button {
 .footer-inner {
   max-width: 1000px;
   margin: 0 auto;
-
+  font-family: Georgia, 'Times New Roman', serif;
 
   display: grid;
   grid-template-columns: 2fr 2fr;
   align-items: start;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .footer-left {
   max-width:400px;
   color: #555;
-  line-height: 1.4;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -138,4 +138,29 @@ button {
   font-size: 0.7rem;
   color: #999;
   margin-top: 0.5rem;
+}
+
+.figure-credit {
+  margin-left: auto;
+  white-space: nowrap;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  color: #b5b5b5;
+  letter-spacing: 0.03em;
+}
+
+  figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+    max-width: 900px;
+  margin: 1rem auto 0;
+  color: #5d5d59;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
 }

@@ -12,6 +12,7 @@
   <div class="content" [class.fade]="animationState === 'active'">
     <div class="content-inner">
     <app-home *ngIf="currentView === 'home'"></app-home>
+    <app-overview *ngIf="currentView === 'overview'"></app-overview>
     <app-about *ngIf="currentView === 'about'"></app-about>
     <app-datasets *ngIf="currentView === 'datasets'"></app-datasets>
   </div>
@@ -21,10 +22,11 @@
   <div class="footer-inner">
 
     <div class="footer-left">
-      <strong>© 2026 Refugee Discourse Database</strong>
+    © 2026 Refugee Discourse Database. | All rights reserved. | Danilo Mandić | Meleese Bremer
     </div>
 
     <div class="footer-meta">
+
       <a href="https://github.com/meleese/rdd-site" target="_blank" aria-label="GitHub repository">
       <i class="fa-brands fa-github"></i>
       </a>

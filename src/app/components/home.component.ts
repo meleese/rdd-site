@@ -13,7 +13,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
     <p class="hero-p">
         <span><i class="fa-solid fa-hexagon-nodes"></i></span>
 
-        A structured, research-focused collection of refugee-related media coverage since 1914.
+        A structured, research-focused collection of refugee-related press coverage since 1914.
     </p>
 
   </div>
