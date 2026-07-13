@@ -1,0 +1,281 @@
+<div class="timeline-wrapper">
+  <div class="timeline-page">
+  <header class="timeline-header">
+    <p class="project-label">
+
+    </p>
+
+    <h2>Refugee Episodes Timeline</h2>
+
+    <p class="introduction">
+      This interactive timeline traces the duration and overlap of conflicts producing refugee episodes between 1914 and 2025.
+    </p>
+  </header>
+
+<section
+  class="timeline-controls"
+  aria-label="Timeline controls"
+>
+  <div class="playback-controls">
+    <button
+      type="button"
+      class="text-button"
+      (click)="togglePlayback()"
+    >
+      {{ isPlaying() ? 'Pause' : 'Play' }}
+    </button>
+
+    <button
+      type="button"
+      class="text-button muted"
+      (click)="reset()"
+    >
+      Reset
+    </button>
+  </div>
+
+  <label class="year-control">
+    <span class="visually-hidden">
+      Current timeline year
+    </span>
+
+    <input
+      type="range"
+      [min]="firstYear"
+      [max]="lastYear"
+      [value]="currentYear()"
+      (input)="setYearFromInput($event)"
+    />
+  </label>
+
+  <p class="active-count">
+    {{ visibleConflicts().length }}
+    active
+    {{ visibleConflicts().length === 1 ? 'episode' : 'episodes' }}
+  </p>
+</section>
+
+<div class="timeline-summary">
+
+  <h2 class="current-year">
+    {{ currentYear() }}
+  </h2>
+
+  <div class="timeline-stats">
+
+    <div class="stat">
+      <span class="value">{{ activeCount() }}</span>
+      <span class="label">Active Episodes</span>
+    </div>
+
+    <div class="stat">
+      <span class="value">{{ completedCount() }}</span>
+      <span class="label">Concluded Episodes</span>
+    </div>
+
+
+  </div>
+
+</div>
+
+  <section
+    class="timeline-figure"
+    aria-labelledby="timeline-caption"
+  >
+    <div class="svg-scroller">
+      <svg
+        class="timeline-svg"
+        [attr.viewBox]="
+          '0 0 ' + svgWidth + ' ' + svgHeight()
+        "
+        [attr.height]="svgHeight()"
+        role="img"
+        aria-labelledby="timeline-title timeline-description"
+      >
+        <title id="timeline-title">
+          Timeline of refugee episodes from 1914 to 2025
+        </title>
+
+        <desc id="timeline-description">
+          Horizontal bars show the beginning and ending years of
+          refugee-producing wars and episodes of displacement.
+        </desc>
+
+        <rect
+          [attr.x]="xPosition(1914)"
+          y="0"
+          [attr.width]="xPosition(1945) - xPosition(1914)"
+          [attr.height]="svgHeight()"
+          class="period-band period-band-one"
+        />
+
+        <rect
+          [attr.x]="xPosition(1945)"
+          y="0"
+          [attr.width]="xPosition(1991) - xPosition(1945)"
+          [attr.height]="svgHeight()"
+          class="period-band period-band-two"
+        />
+
+        @for (year of decadeTicks(); track year) {
+          <line
+            [attr.x1]="xPosition(year)"
+            [attr.x2]="xPosition(year)"
+            y1="38"
+            [attr.y2]="svgHeight() - 40"
+            class="year-gridline"
+          />
+
+          <text
+            [attr.x]="xPosition(year)"
+            y="27"
+            class="year-label"
+            text-anchor="middle"
+          >
+            {{ year }}
+          </text>
+        }
+
+        @for (
+          conflict of visibleConflicts();
+          track conflict.id;
+          let index = $index
+        ) {
+          <g
+            class="timeline-row"
+            [class.selected]="selectedConflict()?.id === conflict.id"
+            (click)="selectConflict(conflict)"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="
+              conflict.conflict +
+              ', ' +
+              displayYears(conflict) +
+              ', ' +
+              formatNumber(conflict.refugeeReferences) +
+              ' refugee references'
+            "
+            (keydown.enter)="selectConflict(conflict)"
+            (keydown.space)="selectConflict(conflict)"
+          >
+            <line
+              [attr.x1]="labelWidth"
+              [attr.x2]="svgWidth - chartRightPadding"
+              [attr.y1]="rowY(index)"
+              [attr.y2]="rowY(index)"
+              class="row-rule"
+            />
+
+            <text
+              [attr.x]="labelWidth - 18"
+              [attr.y]="rowY(index) + 4"
+              text-anchor="end"
+              class="conflict-label"
+            >
+              {{ conflict.conflict }}
+            </text>
+
+            <rect
+              [attr.x]="barX(conflict)"
+              [attr.y]="rowY(index) - barHeight / 2"
+              [attr.width]="barWidth(conflict)"
+              [attr.height]="barHeight"
+              rx="1"
+              class="conflict-bar"
+            >
+              <title>
+                {{ conflict.conflict }}
+                ({{ displayYears(conflict) }})
+              </title>
+            </rect>
+          </g>
+        }
+        @if (visibleConflicts().length === 0) {
+
+  <g class="empty-row">
+
+<line
+  [attr.x1]="xPosition(firstYear)"
+  [attr.x2]="xPosition(lastYear)"
+  [attr.y1]="rowY(0)"
+  [attr.y2]="rowY(0)"
+  class="empty-guide" />
+
+    <text
+      x="10"
+      [attr.y]="topPadding + rowHeight / 2 + 4"
+      class="empty-label">
+
+    </text>
+
+  </g>
+
+}
+
+<g
+  class="playhead-group"
+  [style.transform]="'translateX(' + xPosition(currentYear()) + 'px)'"
+>
+</g>
+      </svg>
+    </div>
+
+    <p class="timeline-status">
+  By {{ currentYear() }},
+  {{ completedCount() }}
+  refugee episodes have concluded,
+  {{ visibleConflicts().length }}
+  {{ visibleConflicts().length === 1 ? 'episode remains active.' : 'episodes remain active.' }}
+</p>
+
+  </section>
+
+  @if (selectedConflict(); as conflict) {
+    <aside class="details-panel" aria-labelledby="details-heading">
+      <div class="details-heading-row">
+        <div>
+          <p class="details-label">Selected episode</p>
+
+          <h2 id="details-heading">
+            {{ conflict.conflict }}
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="close-button"
+          aria-label="Close episode details"
+          (click)="clearSelection()"
+        >
+          ×
+        </button>
+      </div>
+
+      <dl class="details-list">
+        <div>
+          <dt>Period</dt>
+          <dd>{{ displayYears(conflict) }}</dd>
+        </div>
+
+        <div>
+          <dt>Refugee references</dt>
+          <dd>
+            {{ formatNumber(conflict.refugeeReferences) }}
+          </dd>
+        </div>
+
+        <div>
+          <dt>Share of total</dt>
+          <dd>{{ conflict.shareDisplay }}</dd>
+        </div>
+      </dl>
+
+      @if (conflict.subConflicts) {
+        <p class="details-note">
+          {{ conflict.subConflicts }}
+        </p>
+      }
+    </aside>
+  }
+</div>
+</div>

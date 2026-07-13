@@ -5,8 +5,9 @@ import { AboutComponent } from './components/about.component';
 import { OverviewComponent } from './components/overview.component';
 import { CommonModule } from '@angular/common';
 import { DatasetsComponent } from './components/datasets.component';
+import { TimelineComponent } from './components/timeline.component';
 
-type currentView = 'home' | 'overview' | 'about' | 'datasets';
+type currentView = 'home' | 'timeline' | 'overview' | 'about' | 'datasets';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ type currentView = 'home' | 'overview' | 'about' | 'datasets';
     HomeComponent,
     AboutComponent,
     DatasetsComponent,
-    OverviewComponent
+    OverviewComponent,
+    TimelineComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

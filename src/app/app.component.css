@@ -1,5 +1,5 @@
 .container {
-  max-width: 720px;
+  max-width: none;
   text-align: center;
   width: 90%;
   margin: 0 auto;
@@ -164,3 +164,4 @@ button {
   font-size: 0.88rem;
   line-height: 1.55;
 }
+
