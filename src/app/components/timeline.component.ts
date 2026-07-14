@@ -58,6 +58,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
 
   readonly currentYear = signal(this.firstYear);
   readonly isPlaying = signal(false);
+  readonly maximumVisibleRows = 21;
 
 
   readonly timelineWidth =
@@ -73,17 +74,18 @@ readonly visibleConflicts = computed(() => {
   );
 });
 
-readonly svgHeight = computed(() => {
-
-    const rows = Math.max(
-        1,
+    readonly svgHeight = computed(() => {
+    const rowCount = Math.max(
+        this.maximumVisibleRows,
         this.visibleConflicts().length
     );
 
-    return this.topPadding +
-           rows * this.rowHeight +
-           40;
-});
+    return (
+        this.topPadding +
+        rowCount * this.rowHeight +
+        40
+    );
+    });
 
   readonly decadeTicks = computed(() => {
     const ticks: number[] = [];

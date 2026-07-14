@@ -13,7 +13,8 @@
     <div class="content-inner"
     [class.timeline-wide]="currentView === 'timeline'">
     <app-home *ngIf="currentView === 'home'"></app-home>
-    <app-overview *ngIf="currentView === 'overview'"></app-overview>
+    <app-overview *ngIf="currentView === 'overview'" (navigate)="setView($event)">
+    </app-overview>
     <app-timeline *ngIf="currentView === 'timeline'"></app-timeline>
     <app-about *ngIf="currentView === 'about'"></app-about>
     <app-datasets *ngIf="currentView === 'datasets'"></app-datasets>

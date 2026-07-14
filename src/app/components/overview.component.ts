@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-overview',
@@ -47,7 +47,13 @@ import { Component } from '@angular/core';
           <h2 id="section-two-heading">Conflict Timeline</h2>
 
           <p>
-            A timeline of overlapping conflicts producing refugee episdoes across years, since 1914.
+            A timeline of overlapping conflicts producing refugee episdoes across years, since 1914. For an interactive timeline of the same data, see   
+            <a
+            href=""
+            class="inline-link"
+            (click)="goToTimeline($event)">
+            Timeline
+          </a>.
           </p>
         </div>
       </header>
@@ -56,7 +62,7 @@ import { Component } from '@angular/core';
         <div class="figure-surface">
         <img
             src="assets/overview/refugee-episodes-timeline.png"
-            alt="Timeline of verlapping conflicts across years, since 1914."
+            alt="Timeline of overlapping conflicts across years, since 1914."
             class="figure-image"
         />
         </div>
@@ -221,7 +227,7 @@ article {
   max-width: 820px;
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.03;
   letter-spacing: -0.035em;
@@ -494,8 +500,40 @@ p {
   .article-section {
     padding: 3.5rem 0;
   }
+
+.inline-link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  color: #334f61;
+  font: inherit;
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: #193a50;
+  text-decoration-thickness: 2px;
+}
 }
 
   `]
 })
-export class OverviewComponent {}
+export class OverviewComponent {
+  @Output() navigate = new EventEmitter<
+  'home' | 'overview' | 'timeline' | 'about' | 'datasets'
+>();
+
+goToTimeline(event: MouseEvent) {
+  event.preventDefault();
+  this.navigate.emit('timeline');
+}
+}

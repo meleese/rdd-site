@@ -709,10 +709,12 @@ export interface ConflictData {
 
 
     <div class="main-column">
-
+    <p class="series-title">
+        Data Summaries
+    </p>
       <h1>Refugee Press Coverage by War</h1>
 <div class="data-intro">
-  <p class="lead">
+  <p>
     This data summarizes refugee-related coverage by refugee episode from 1914-2025 with aggregates measured by share of refugee keywords.
   </p>
 </div>
@@ -842,6 +844,381 @@ export interface ConflictData {
   overflow: hidden;
 }
 
+h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+
+.series-title,
+.section-number,
+.case-label {
+  margin: 0 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #59636b;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+:host {
+  display: block;
+  background: #ffffff;
+  color: #252525;
+}
+
+.sources-section {
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+:host {
+  display: block;
+  background: #ffffff;
+  color: #252525;
+}
+
+.research-overview {
+  padding: 5rem 2rem 7rem;
+}
+
+article {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.article-header,
+.abstract,
+.article-body,
+.method-note,
+.conclusion {
+  max-width: 790px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.article-header {
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid #bfc0bb;
+}
+
+.series-title,
+.section-number,
+.case-label {
+  margin: 0 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #59636b;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.article-header h1 {
+  max-width: 820px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+
+.subtitle {
+  max-width: 720px;
+  margin: 1.5rem 0 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #505050;
+  font-size: 1.35rem;
+  line-height: 1.55;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #6c6c68;
+  font-size: 0.82rem;
+}
+
+a {
+  color: #334f61;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+p {
+  max-width: 720px;
+}
+
+.abstract {
+  padding: 3rem 0;
+  border-bottom: 1px solid #cecec8;
+}
+
+.abstract h2 {
+  margin: 0 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.abstract p,
+.article-body p,
+.method-note p,
+.conclusion p {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.abstract p:first-of-type::first-letter {
+  float: left;
+  margin: 0.08em 0.08em 0 0;
+  font-size: 3.3em;
+  line-height: 0.8;
+}
+
+.article-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid #cecec8;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 790px);
+  gap: 1.25rem;
+  max-width: 860px;
+  margin: 0 auto 3rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.section-header p:not(.section-number) {
+  max-width: 690px;
+  margin: 1rem 0 0;
+  color: #61615e;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+}
+
+.section-number {
+  padding-top: 0.55rem;
+}
+
+.figure {
+  margin: 3rem auto;
+}
+
+.figure-wide {
+  max-width: 1100px;
+}
+
+.figure-surface {
+  padding: 2rem;
+  background: #f3f3f3;
+  border: 1px solid #d2d1ca;
+}
+
+.figure-image {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.chart-placeholder-tall {
+  min-height: 720px;
+}
+
+
+  figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+    max-width: 900px;
+  margin: 1rem auto 0;
+  color: #5d5d59;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.figure-number {
+  color: #292929;
+  font-weight: 600;
+}
+  .figure-credit {
+  margin-left: auto;
+  white-space: nowrap;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  color: #b5b5b5;
+  letter-spacing: 0.03em;
+}
+
+.article-body {
+  margin-top: 2.5rem;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 4rem;
+  align-items: center;
+  margin: 5rem 0;
+}
+
+.case-study-reversed {
+  grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr);
+}
+
+.case-study-reversed .documentary-figure {
+  order: 2;
+}
+
+.documentary-figure {
+  margin: 0;
+}
+
+.documentary-figure img {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  object-fit: cover;
+}
+
+.case-study-text {
+  max-width: 420px;
+}
+
+.case-study-text h3 {
+  margin: 0 0 1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.case-study-text p:not(.case-label) {
+  color: #585854;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.75;
+}
+
+.method-note {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 2rem 0 2rem 2rem;
+  border-left: 2px solid #586d79;
+}
+
+.method-note h2 {
+  margin: 0 0 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.conclusion {
+  padding-top: 4rem;
+}
+
+.conclusion h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+
+.research-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 760px) {
+  .research-overview {
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  .section-header {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .section-number {
+    margin-bottom: 0.5rem;
+  }
+
+  .figure-surface {
+    padding: 0.75rem;
+  }
+
+  .chart-placeholder,
+  .chart-placeholder-tall {
+    min-height: 340px;
+  }
+
+  .case-study,
+  .case-study-reversed {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .case-study-reversed .documentary-figure {
+    order: initial;
+  }
+
+  .article-section {
+    padding: 3.5rem 0;
+  }
+
+.inline-link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  color: #334f61;
+  font: inherit;
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: #193a50;
+  text-decoration-thickness: 2px;
+}
 
   `]
 })
