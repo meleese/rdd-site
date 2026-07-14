@@ -47,7 +47,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
           <h2 id="section-two-heading">Conflict Timeline</h2>
 
           <p>
-            A timeline of overlapping conflicts producing refugee episdoes across years, since 1914. For an interactive timeline of the same data, see   
+            A timeline of overlapping conflicts producing refugee episdoes across years, since 1914. For an interactive version of this timeline, see   
             <a
             href=""
             class="inline-link"
