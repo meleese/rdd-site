@@ -136,7 +136,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
       <figure class="figure figure-wide">
         <div class="figure-surface">
         <img
-            src="assets/overview/total-mentions.jpg"
+            src="assets/overview/totals-2025.png"
             alt="The count of distinct articles, mentions and publications containing refugee references from 1914-2024."
             class="figure-image"
         />

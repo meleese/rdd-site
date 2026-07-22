@@ -36,11 +36,16 @@ button {
   backdrop-filter: blur(6px);
     border-top: 1px solid rgba(0,0,0,0.08);
 
-      position: fixed;
   bottom: 0;
   width: 100%;
 }
-
+.page-wrapper.home {
+  min-height: calc(100vh - 120px);
+}
+.site-footer.home-footer {
+  position: static;
+  margin-top: 0;
+}
 .site-footer-home {
   margin-top: 4rem;
   padding: 1.5rem 0;

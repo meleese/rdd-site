@@ -37,6 +37,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   color: #b2b2b2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
+.page-wrapper {
+  min-height: calc(100vh - 120px);
+}
   `]
 })
 export class HomeComponent {

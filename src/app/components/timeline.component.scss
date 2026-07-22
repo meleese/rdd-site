@@ -317,22 +317,6 @@
   }
 }
 
-@media (max-width: 800px) {
-  .timeline-page {
-    padding: 3rem 1.25rem 5rem;
-  }
-
-  .timeline-controls {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .details-list {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
 
 .timeline-header {
   max-width: 850px;
@@ -507,20 +491,6 @@
     font-style: italic;
 }
 
-@media (max-width: 900px) {
-  .timeline-page {
-    width: calc(100% - 2rem);
-    margin-inline: auto;
-    padding: 3rem 1.5rem 4rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .timeline-page {
-    width: calc(100% - 1rem);
-    padding: 2.25rem 1rem 3rem;
-  }
-}
 
 .wide-view {
   width: 100%;
@@ -541,4 +511,230 @@
   color: #505050;
   font-size: 1.35rem;
   line-height: 1.55;
+}
+
+
+@media (max-width: 900px) {
+  .timeline-page {
+    width: calc(100vw - 1.5rem);
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .timeline-header {
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-header h1 {
+    font-size: clamp(2.3rem, 8vw, 3.6rem);
+  }
+
+  .subtitle {
+    max-width: 100%;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .timeline-controls {
+    grid-template-columns: auto minmax(180px, 1fr);
+    gap: 1rem 1.5rem;
+  }
+
+  .active-count {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+
+  .timeline-summary {
+    margin: 1.75rem 0 2rem;
+  }
+
+  .current-year {
+    font-size: 2.6rem;
+  }
+
+  .timeline-stats {
+    gap: 2rem;
+    margin-top: 1.25rem;
+  }
+
+  .stat {
+    min-width: 130px;
+  }
+
+  .svg-scroller {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .timeline-svg {
+    width: auto;
+    min-width: 1050px;
+  }
+
+  .timeline-status {
+    padding-inline: 1rem;
+  }
+
+  .details-panel {
+    max-width: 100%;
+    margin-top: 3rem;
+  }
+
+  .details-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Phones */
+
+@media (max-width: 600px) {
+  .timeline-page {
+    width: calc(100vw - 0.75rem);
+    padding: 2rem 1rem 3rem;
+  }
+
+  .timeline-header {
+    margin-bottom: 2rem;
+  }
+
+  .project-label {
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-header h1 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    line-height: 1.08;
+  }
+
+  .subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .timeline-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .playback-controls {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .text-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .year-control {
+    width: 100%;
+  }
+
+  .year-control input {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .active-count {
+    grid-column: auto;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .timeline-summary {
+    margin: 1.5rem 0;
+  }
+
+  .current-year {
+    font-size: 2.35rem;
+  }
+
+  .timeline-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .stat {
+    min-width: 0;
+  }
+
+  .stat .value {
+    font-size: 1.05rem;
+  }
+
+  .stat .label {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  .svg-scroller {
+    position: relative;
+    margin-inline: -1rem;
+    width: calc(100% + 2rem);
+    padding-bottom: 0.4rem;
+  }
+
+  .timeline-svg {
+    width: auto;
+    min-width: 980px;
+  }
+
+  .conflict-label {
+    font-size: 11px;
+  }
+
+  .year-label {
+    font-size: 10px;
+  }
+
+  .timeline-status {
+    margin: 0.85rem 0 0;
+    padding-inline: 0;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .details-heading-row {
+    gap: 1rem;
+  }
+
+  .details-panel h2 {
+    font-size: 1.65rem;
+  }
+
+  .details-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .close-button {
+    width: 44px;
+    height: 44px;
+    display: inline-grid;
+    place-items: center;
+  }
+}
+
+.timeline-wrapper {
+  width: 100%;
+  min-width: 0;
+}
+
+.timeline-page {
+  box-sizing: border-box;
+}
+
+.timeline-figure,
+.svg-scroller {
+  min-width: 0;
 }
