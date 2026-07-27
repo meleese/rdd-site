@@ -26,21 +26,20 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
             (click)="navigate.emit('home')">
             Home
           </button>
-
           <button 
-            [class.active]="currentView === 'overview'"
-            (click)="navigate.emit('overview')">
-            Overview
-          </button>
-        <button
-          [class.active]="currentView === 'timeline'"
-          (click)="navigate.emit('timeline')">
-          Timeline
-        </button>
-        <button 
             [class.active]="currentView === 'datasets'"
             (click)="navigate.emit('datasets')">
             Data Summaries
+          </button>
+          <button 
+            [class.active]="currentView === 'overview'"
+            (click)="navigate.emit('overview')">
+            Visualizations
+          </button>
+          <button
+            [class.active]="currentView === 'timeline'"
+            (click)="navigate.emit('timeline')">
+            Timeline
           </button>
 
           <a href="https://research.refugeediscoursedatabase.org" target="_blank" rel="noopener">
@@ -51,19 +50,28 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
     </nav>
   `,
   styles: [`
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: block;
+  width: 100%;
+  flex-shrink: 0;
+}
 
-    padding: 1rem 3rem;
-    width: 100%;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-  }
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 3rem;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
   .nav-inner {
     max-width: 1100px;
     margin: 0 auto;

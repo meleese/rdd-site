@@ -705,19 +705,20 @@ export interface ConflictData {
       CommonModule,
     ],
   template: `
-<div>
+<div class="datasets-page">
+  <main class="datasets-content">
 
-
-    <div class="main-column">
-    <p class="series-title">
+    <header class="datasets-header">
+      <p class="series-title">
         Data Summaries
-    </p>
+      </p>
       <h1>Refugee Press Coverage by War</h1>
-<div class="data-intro">
-  <p>
-    This data summarizes refugee-related coverage by refugee episode from 1914-2025 with aggregates measured by share of refugee keywords.
-  </p>
-</div>
+      <p class="datasets-subtitle">
+        This data summarizes refugee-related coverage by refugee episode
+        from 1914–2025, with aggregates measured by share of refugee keywords.
+      </p>
+    </header>
+    <div class="main-column">
 <div class="data-row header">
   <div>War</div>
   <div>Years</div>
@@ -751,6 +752,26 @@ export interface ConflictData {
 </div>
   ` ,
     styles: [`
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+
+  background: #ffffff;
+  color: #252525;
+}
+
+.datasets-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.datasets-content {
+  width: 100%;
+  padding: 5rem 2rem 7rem;
+  box-sizing: border-box;
+}
+
  .two-column {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -758,7 +779,9 @@ export interface ConflictData {
 }
 
 .main-column {
-  max-width: 750px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .side-column {
@@ -844,16 +867,47 @@ export interface ConflictData {
   overflow: hidden;
 }
 
-h1 {
+.datasets-header {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 4rem;
+  padding-bottom: 3rem;
+
+  border-bottom: 1px solid #bfc0bb;
+  box-sizing: border-box;
+}
+
+.series-title {
+  margin: 0 0 1rem;
+
+  color: #59636b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.datasets-header h1 {
+  max-width: none;
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 3rem;
+  font-size: clamp(2.8rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 1.03;
+  line-height: 1.05;
   letter-spacing: -0.035em;
 }
 
-.series-title,
+.datasets-subtitle {
+  max-width: 820px;
+  margin: 1.5rem 0 0;
+  color: #505050;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  line-height: 1.55;
+}
+  
 .section-number,
 .case-label {
   margin: 0 0 1rem;

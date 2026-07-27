@@ -1,42 +1,55 @@
 <div class="app-container">
-    <app-navbar 
+  <app-navbar
     [currentView]="currentView"
     (navigate)="setView($event)">
   </app-navbar>
-  <div 
-  class="page-wrapper"
-  [class.home]="currentView === 'home'"
-  [class.standard]="currentView !== 'home'"
-  >
 
-  <div class="content" [class.fade]="animationState === 'active'">
-    <div class="content-inner"
-    [class.timeline-wide]="currentView === 'timeline'">
-    <app-home *ngIf="currentView === 'home'"></app-home>
-    <app-overview *ngIf="currentView === 'overview'" (navigate)="setView($event)">
-    </app-overview>
-    <app-timeline *ngIf="currentView === 'timeline'"></app-timeline>
-    <app-about *ngIf="currentView === 'about'"></app-about>
-    <app-datasets *ngIf="currentView === 'datasets'"></app-datasets>
-  </div>
-  </div>
-  </div>
-  <footer class="site-footer" [class.home-footer]="currentView === 'home'">
-  <div class="footer-inner">
+  <div
+    class="page-wrapper"
+    [class.home]="currentView === 'home'"
+    [class.standard]="currentView !== 'home'">
 
-    <div class="footer-left">
-    © 2026 Refugee Discourse Database. | All rights reserved. | Danilo Mandić | Meleese Bremer
-    </div>
+    <div
+      class="content"
+      [class.fade]="animationState === 'active'">
 
-    <div class="footer-meta">
+<div class="content-inner">
+  <app-home
+    *ngIf="currentView === 'home'"
+    (navigate)="setView($event)">
+  </app-home>
 
-      <a href="https://github.com/meleese/rdd-site" target="_blank" aria-label="GitHub repository">
-      <i class="fa-brands fa-github"></i>
-      </a>
-      <a href="mailto:inquiries@refugeediscoursedatabase.org?subject=Refugee%20Discourse%20Database%20Inquiry">
-        <i class="fa-solid fa-envelope"></i> Contact Us
-      </a>
+  <app-about
+    *ngIf="currentView === 'about'">
+  </app-about>
+</div>
     </div>
   </div>
-</footer>
+
+  <footer
+    class="site-footer"
+    [class.home-footer]="currentView === 'home'">
+
+    <div class="footer-inner">
+      <div class="footer-left">
+        © 2026 Refugee Discourse Database. | All rights reserved.
+      </div>
+
+      <div class="footer-meta">
+        <a
+          href="https://github.com/meleese/rdd-site"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub repository">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a
+          href="mailto:inquiries@refugeediscoursedatabase.org?subject=Refugee%20Discourse%20Database%20Inquiry">
+          <i class="fa-solid fa-envelope"></i>
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </footer>
 </div>
