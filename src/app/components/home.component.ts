@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Output
+} from '@angular/core';
 import { DatasetsComponent } from './datasets.component';
 import { OverviewComponent } from './overview.component';
 import { TimelineComponent } from './timeline.component';
@@ -177,6 +182,45 @@ type HomeSection = 'home' | 'datasets' | 'overview' | 'timeline';
 })
 export class HomeComponent {
   @Output() navigate = new EventEmitter<AppView>();
+  @Output() activeSectionChange = new EventEmitter<AppView>();
+
+  private sectionObserver?: IntersectionObserver;
+  private activeSection: HomeSection = 'home';
+
+  @HostListener('window:scroll')
+onWindowScroll(): void {
+  this.updateActiveSection();
+}
+
+private updateActiveSection(): void {
+  const sections: HomeSection[] = [
+    'home',
+    'datasets',
+    'overview',
+    'timeline'
+  ];
+
+  const activationPoint = window.scrollY + 120;
+
+  let currentSection: HomeSection = 'home';
+
+  for (const sectionId of sections) {
+    const section = document.getElementById(sectionId);
+
+    if (!section) {
+      continue;
+    }
+
+    if (section.offsetTop <= activationPoint) {
+      currentSection = sectionId;
+    }
+  }
+
+  if (currentSection !== this.activeSection) {
+    this.activeSection = currentSection;
+    this.activeSectionChange.emit(currentSection);
+  }
+}
 
   handleSectionNavigation(view: AppView): void {
     if (this.isHomeSection(view)) {
@@ -188,6 +232,9 @@ export class HomeComponent {
   }
 
   scrollToSection(sectionId: HomeSection): void {
+    this.activeSection = sectionId;
+    this.activeSectionChange.emit(sectionId);
+
     document
       .getElementById(sectionId)
       ?.scrollIntoView({

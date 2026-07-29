@@ -41,10 +41,11 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
             (click)="navigate.emit('timeline')">
             Timeline
           </button>
-
-          <a href="https://research.refugeediscoursedatabase.org" target="_blank" rel="noopener">
+          <button
+            type="button"
+            onclick="window.open('https://research.refugeediscoursedatabase.org','_blank')">
             Login
-          </a>
+          </button>
         </div>
       </div>
     </nav>
@@ -135,42 +136,41 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 .links button {
   background: none;
   border: none;
-  padding: 0;
+  border-bottom: 1px solid transparent;
+  padding: 0 0 2px 0;
 
   font-size: 1rem;
   color: #666;
 
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
+.links button:hover,
 .links button.active {
   color: var(--primary);
-  border-bottom: 1px solid var(--primary);
-  padding-bottom: 2px;
+  border-bottom-color: var(--primary);
 }
-
-  .links button:hover {
-    color: var(--primary);
-  }
 
   .links a {
-  text-decoration: none;
+    text-decoration: none;
 
-  transition: color 0.2s ease;
-  background: none;
-  border: none;
-  padding: 0;
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
 
-  font-size: 1rem;
-  color: #666;
+    font-size: 1rem;
+    color: #666;
 
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-.links a:hover {
-  color: var(--primary);
-}
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .links a:hover {
+    color: var(--primary);
+  }
 
   .cta {
     border: 1px solid #111;

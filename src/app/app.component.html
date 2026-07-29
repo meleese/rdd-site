@@ -13,16 +13,16 @@
       class="content"
       [class.fade]="animationState === 'active'">
 
-<div class="content-inner">
-  <app-home
-    *ngIf="currentView === 'home'"
-    (navigate)="setView($event)">
-  </app-home>
+    <div class="content-inner">
+    <app-home
+      (navigate)="setView($event)"
+      (activeSectionChange)="setActiveView($event)">
+    </app-home>
 
-  <app-about
-    *ngIf="currentView === 'about'">
-  </app-about>
-</div>
+      <app-about
+        *ngIf="currentView === 'about'">
+      </app-about>
+    </div>
     </div>
   </div>
 

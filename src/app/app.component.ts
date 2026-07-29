@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from './components/navbar.component';
-import { HomeComponent } from './components/home.component';
-import { AboutComponent } from './components/about.component';
 import { CommonModule } from '@angular/common';
-
-type currentView = 'home' | 'timeline' | 'overview' | 'about' | 'datasets';
-type AppView =
-  | 'home'
-  | 'datasets'
-  | 'overview'
-  | 'timeline'
-  | 'about';
-
- type HomeSection = 'home' | 'datasets' | 'overview' | 'timeline';
+import { NavbarComponent } from './components/navbar.component';
+import {
+  HomeComponent,
+  type AppView
+} from './components/home.component';
+import { AboutComponent } from './components/about.component';
 
 @Component({
   selector: 'app-root',
@@ -28,45 +21,46 @@ type AppView =
 })
 
 export class AppComponent {
-  currentView: currentView = 'home';
+  currentView: AppView = 'home';
   animationState = '';
 
-setView(view: AppView): void {
-if (view === 'home') {
+setActiveView(view: AppView): void {
+  this.currentView = view;
+}
 
-  if (this.currentView !== 'home') {
+setView(view: AppView): void {
+  if (view === 'home') {
+    const comingFromAbout = this.currentView === 'about';
+
     this.currentView = 'home';
 
-    requestAnimationFrame(() => {
+    if (comingFromAbout) {
       requestAnimationFrame(() => {
-        document.getElementById('home')?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+        requestAnimationFrame(() => {
+          this.scrollToHome();
         });
       });
-    });
 
+      return;
+    }
+
+    this.scrollToHome();
     return;
   }
-
-  document.getElementById('home')?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-
-  return;
-}
 
   if (
     view === 'datasets' ||
     view === 'overview' ||
     view === 'timeline'
   ) {
-    if (this.currentView !== 'home') {
+    const comingFromAbout = this.currentView === 'about';
+
+    if (comingFromAbout) {
       this.currentView = 'home';
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
+          this.currentView = view;
           this.scrollToSection(view);
         });
       });
@@ -74,6 +68,7 @@ if (view === 'home') {
       return;
     }
 
+    this.currentView = view;
     this.scrollToSection(view);
     return;
   }
@@ -87,6 +82,16 @@ if (view === 'home') {
     });
   });
 }
+
+private scrollToHome(): void {
+  document
+    .getElementById('home')
+    ?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+}
+
 private scrollToSection(
   sectionId: 'datasets' | 'overview' | 'timeline'
 ): void {
