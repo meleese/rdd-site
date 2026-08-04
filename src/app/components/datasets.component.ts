@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CitationPopoutComponent } from './citation.component';
 
 export const CONFLICT_DATA = [
   {
@@ -703,6 +704,7 @@ export interface ConflictData {
   standalone: true,
     imports: [
       CommonModule,
+      CitationPopoutComponent
     ],
   template: `
 <div class="datasets-page">
@@ -717,6 +719,7 @@ export interface ConflictData {
         This data summarizes refugee-related coverage by refugee episode
         from 1914–2025, with aggregates measured by share of refugee keywords.
       </p>
+      <app-citation-popout/>
     </header>
     <div class="main-column">
 <div class="data-row header">
@@ -1273,7 +1276,7 @@ p {
   color: #193a50;
   text-decoration-thickness: 2px;
 }
-
+    }
   `]
 })
 export class DatasetsComponent {

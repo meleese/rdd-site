@@ -204,6 +204,13 @@ figcaption {
   line-height: 1.55;
 }
 
+.figure-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 @media (max-width: 760px) {
   .footer-inner {
     grid-template-columns: 1fr;

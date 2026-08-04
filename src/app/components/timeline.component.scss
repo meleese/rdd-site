@@ -757,3 +757,26 @@
 .svg-scroller {
   min-width: 0;
 }
+
+figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  width: 100%;
+  margin: 1rem auto 0;
+  color: #5d5d59;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.figure-credit {
+  margin-left: auto;
+  white-space: nowrap;
+  color: #b5b5b5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}

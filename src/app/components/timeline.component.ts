@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { CitationPopoutComponent } from './citation.component';
 
 interface ConflictJsonRow {
   conflict: string;
@@ -37,7 +38,7 @@ interface TimelineConflict {
 @Component({
   selector: 'app-timeline',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CitationPopoutComponent],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

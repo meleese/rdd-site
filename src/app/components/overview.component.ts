@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CitationPopoutComponent } from './citation.component';
 
 export type AppView =
   | 'home'
@@ -10,6 +11,9 @@ export type AppView =
 @Component({
   selector: 'app-overview',
   standalone: true,
+  imports: [
+    CitationPopoutComponent
+  ],
   template: `
     <div class="datasets-page">
       <main class="research-overview">
@@ -43,6 +47,7 @@ export type AppView =
                   Timeline
                 </a>.
               </p>
+              <app-citation-popout />
             </header>
 
             <figure class="figure figure-wide">
@@ -61,9 +66,6 @@ export type AppView =
                   since 1914.
                 </span>
 
-                <span class="figure-credit">
-                  Created by Meleese Bremer
-                </span>
               </figcaption>
             </figure>
 
@@ -83,6 +85,7 @@ export type AppView =
               <h2 id="oped-volume-heading">
                 Op-Ed Article Volume by Country
               </h2>
+              <app-citation-popout />
             </header>
 
             <figure class="figure figure-wide">
@@ -129,6 +132,7 @@ export type AppView =
                 The count of articles, mentions and publications
                 containing refugee references since 1914.
               </p>
+              <app-citation-popout />
             </header>
 
             <figure class="figure figure-wide">
@@ -458,7 +462,7 @@ export type AppView =
         margin-top: 2rem;
       }
     }
-  `]
+  `],
 })
 export class OverviewComponent {
   @Output() navigate = new EventEmitter<AppView>();

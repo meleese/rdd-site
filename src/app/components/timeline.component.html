@@ -1,6 +1,5 @@
 <div class="timeline-wrapper">
   <div class="timeline-page">
-
     <section class="timeline-intro">
       <header class="timeline-header">
         <p class="project-label">
@@ -13,6 +12,7 @@
           This interactive timeline traces the duration and overlap of
           conflicts producing refugee episodes between 1914 and 2025.
         </p>
+        <app-citation-popout />
       </header>
     </section>
 
@@ -225,13 +225,17 @@
     </div>
 
     <p class="timeline-status">
-  By {{ currentYear() }},
-  {{ completedCount() }}
-  refugee episodes have concluded,
-  {{ visibleConflicts().length }}
-  {{ visibleConflicts().length === 1 ? 'episode remains active.' : 'episodes remain active.' }}
-</p>
-
+      By {{ currentYear() }},
+      {{ completedCount() }}
+      refugee episodes have concluded,
+      {{ visibleConflicts().length }}
+      {{ visibleConflicts().length === 1 ? 'episode remains active.' : 'episodes remain active.' }}
+    </p>
+    <figcaption>
+      <span class="figure-credit">
+        Created by Meleese Bremer
+      </span>
+    </figcaption>
   </section>
 
   @if (selectedConflict(); as conflict) {

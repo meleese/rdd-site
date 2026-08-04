@@ -133,26 +133,26 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
     justify-content: center;
   }
 
-.links button {
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  padding: 0 0 2px 0;
+  .links button {
+    background: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 0 0 2px 0;
 
-  font-size: 1rem;
-  color: #666;
+    font-size: 1rem;
+    color: #666;
 
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
 
-.links button:hover,
-.links button.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
-}
+  .links button:hover,
+  .links button.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
 
   .links a {
     text-decoration: none;
