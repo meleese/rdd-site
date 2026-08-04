@@ -1,54 +1,105 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
+type AppView =
+  | 'home'
+  | 'datasets'
+  | 'overview'
+  | 'timeline';
+  
 @Component({
   selector: 'app-navbar',
   standalone: true,
   template: `
-    <nav class="nav">
-      <div class="nav-inner">
-      <div class="logo">
-        <div class="mark">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="divider"></div>
-        <div class="text">
-          <span>Refugee</span>
-          <span>Discourse</span>
-          <span>Database</span>
-        </div>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="mark">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
-        <div class="links">
-          <button 
-            [class.active]="currentView === 'home'"
-            (click)="navigate.emit('home')">
-            Home
-          </button>
-          <button 
-            [class.active]="currentView === 'datasets'"
-            (click)="navigate.emit('datasets')">
-            Data Summaries
-          </button>
-          <button 
-            [class.active]="currentView === 'overview'"
-            (click)="navigate.emit('overview')">
-            Visualizations
-          </button>
-          <button
-            [class.active]="currentView === 'timeline'"
-            (click)="navigate.emit('timeline')">
-            Timeline
-          </button>
-          <button
-            type="button"
-            onclick="window.open('https://research.refugeediscoursedatabase.org','_blank')">
-            Login
-          </button>
-        </div>
+      <div class="divider"></div>
+
+      <div class="text">
+        <span>Refugee</span>
+        <span>Discourse</span>
+        <span>Database</span>
       </div>
-    </nav>
+    </div>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="menuOpen"
+      (click)="menuOpen = !menuOpen"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        @if (!menuOpen) {
+          <path
+            d="M4 7h16M4 12h16M4 17h16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        } @else {
+          <path
+            d="M6 6l12 12M18 6L6 18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        }
+      </svg>
+    </button>
+
+    <div
+      class="links"
+      [class.mobile-open]="menuOpen"
+    >
+      <button
+        [class.active]="currentView === 'home'"
+        (click)="selectView('home')"
+      >
+        Home
+      </button>
+
+      <button
+        [class.active]="currentView === 'datasets'"
+        (click)="selectView('datasets')"
+      >
+        Data Summaries
+      </button>
+
+      <button
+        [class.active]="currentView === 'overview'"
+        (click)="selectView('overview')"
+      >
+        Visualizations
+      </button>
+
+      <button
+        [class.active]="currentView === 'timeline'"
+        (click)="selectView('timeline')"
+      >
+        Timeline
+      </button>
+
+      <button
+        type="button"
+        (click)="openLogin()"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</nav>
   `,
   styles: [`
 :host {
@@ -189,9 +240,88 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   button:active {
     transform: translateY(1px);
   }
+
+  .menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+
+  border: 1px solid #d8dee6;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menu-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .nav-inner {
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .links {
+    display: none;
+
+    position: absolute;
+    z-index: 1000;
+    top: calc(100% + 0.5rem);
+    right: 0;
+
+    width: min(15rem, calc(100vw - 2rem));
+    padding: 0.5rem;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+
+    border: 1px solid #d8dee6;
+    border-radius: 0.55rem;
+    background: #fff;
+    box-shadow: 0 0.75rem 2rem rgb(15 23 42 / 14%);
+  }
+
+  .links.mobile-open {
+    display: flex;
+  }
+
+  .links button {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    text-align: left;
+  }
+}
   `]
 })
 export class NavbarComponent {
   @Input() currentView!: 'home' | 'overview' | 'timeline' | 'about' | 'datasets';
   @Output() navigate = new EventEmitter<'home' | 'overview' | 'timeline' | 'about' | 'datasets'>();
+  menuOpen = false;
+
+  selectView(view: AppView): void {
+    this.menuOpen = false;
+    this.navigate.emit(view);
+  }
+
+  openLogin(): void {
+    this.menuOpen = false;
+
+    window.open(
+      'https://research.refugeediscoursedatabase.org',
+      '_blank',
+      'noopener,noreferrer'
+    );
+  }
 }
