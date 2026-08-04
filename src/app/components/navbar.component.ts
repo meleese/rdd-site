@@ -5,7 +5,7 @@ type AppView =
   | 'datasets'
   | 'overview'
   | 'timeline';
-  
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -265,11 +265,20 @@ type AppView =
 @media (max-width: 760px) {
   .nav-inner {
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .logo {
+    justify-self: start;
   }
 
   .menu-toggle {
     display: inline-flex;
-    margin-left: auto;
+    justify-self: center;
+
+    margin: 0;
   }
 
   .links {
