@@ -13,7 +13,37 @@ import { Component } from '@angular/core';
         [attr.aria-expanded]="isOpen"
         (click)="toggle()"
       >
-        <span aria-hidden="true">ⓘ</span>
+        <span aria-hidden="true">
+        <svg
+  class="info-icon"
+  viewBox="0 0 24 24"
+  aria-hidden="true"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="9"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+  />
+
+  <path
+    d="M12 10.5v6"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="12"
+    cy="7.5"
+    r="1"
+    fill="currentColor"
+  />
+</svg>
+        </span>
         <span>Cite</span>
       </button>
 
@@ -68,7 +98,12 @@ styles: [`
   width: 100%;
   text-align: right;
 }
-
+.info-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: 0 0 auto;
+  display: block;
+}
 .citation-popout {
     position: relative;
     display: inline-flex;
