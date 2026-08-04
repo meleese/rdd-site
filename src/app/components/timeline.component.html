@@ -86,6 +86,8 @@
     class="timeline-figure"
     aria-labelledby="timeline-caption"
   >
+  <div #timelineScroller
+  class="svg-scroller">
     <div class="svg-scroller">
       <svg
         class="timeline-svg"
@@ -223,7 +225,7 @@
 </g>
       </svg>
     </div>
-
+</div>
     <p class="timeline-status">
       By {{ currentYear() }},
       {{ completedCount() }}

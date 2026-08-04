@@ -126,18 +126,40 @@
 
 .svg-scroller {
   width: 100%;
-  max-height: none;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-bottom: 0.5rem;
+
   overflow-x: auto;
-  overflow-y: visible;
-  border-top: 1px solid #d7d7d2;
-  border-bottom: 1px solid #d7d7d2;
+  overflow-y: hidden;
+
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+  scrollbar-color: #a8a8a3 transparent;
+}
+
+.svg-scroller::-webkit-scrollbar {
+  height: 7px;
+}
+
+.svg-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.svg-scroller::-webkit-scrollbar-thumb {
+  background: #a8a8a3;
+  border-radius: 999px;
 }
 
 .timeline-svg {
   display: block;
-  width: 100%;
-  min-width: 1050px;
-  background: #fff;
+  width: 980px;
+  min-width: 980px;
+  max-width: none;
+  margin-inline: auto;
+  flex: 0 0 auto;
 }
 
 .period-band {

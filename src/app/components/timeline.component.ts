@@ -1,8 +1,11 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
+  ViewChild,
   computed,
   signal
 } from '@angular/core';
@@ -43,7 +46,7 @@ interface TimelineConflict {
   styleUrl: './timeline.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TimelineComponent implements OnInit, OnDestroy {
+export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly firstYear = 1914;
   readonly lastYear = 2025;
 
@@ -102,6 +105,21 @@ readonly visibleConflicts = computed(() => {
   private lastAdvanceTime = 0;
 
   constructor(private readonly http: HttpClient) {}
+  @ViewChild('timelineScroller')
+  private timelineScroller?: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit(): void {
+    const scroller = this.timelineScroller?.nativeElement;
+
+    if (!scroller || window.innerWidth > 600) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      scroller.scrollLeft =
+        (scroller.scrollWidth - scroller.clientWidth) / 2;
+    });
+  }
 
   ngOnInit(): void {
     this.http
