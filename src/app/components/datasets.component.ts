@@ -770,11 +770,11 @@ export interface ConflictData {
 }
 
 .datasets-content {
-  width: 100%;
-  padding: 5rem 2rem 7rem;
+  width: min(1100px, calc(100% - 4rem));
+  margin-inline: auto;
+  padding: 5rem 0 7rem;
   box-sizing: border-box;
 }
-
  .two-column {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -783,8 +783,8 @@ export interface ConflictData {
 
 .main-column {
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .side-column {
@@ -799,8 +799,9 @@ export interface ConflictData {
 
 .data-row {
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1.5fr;
   gap: 1rem;
+  width: 100%;
   padding: 0.75rem 0;
   border-bottom: 1px solid #eee;
   align-items: center;
@@ -845,9 +846,9 @@ export interface ConflictData {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-  .data-grid {
+
+.data-grid {
   display: grid;
-  grid-template-columns: 3fr 1.2fr 1fr 1.2fr 1fr;
   gap: 1.5rem;
   align-items: center;
 }
@@ -862,8 +863,6 @@ export interface ConflictData {
   font-size: 0.85rem;
   color: #666;
   line-height: 1.4;
-
-  /* prevent huge overflow on mobile */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -872,11 +871,8 @@ export interface ConflictData {
 
 .datasets-header {
   width: 100%;
-  max-width: 1100px;
-
-  margin: 0 auto 4rem;
+  margin: 0 0 4rem;
   padding-bottom: 3rem;
-
   border-bottom: 1px solid #bfc0bb;
   box-sizing: border-box;
 }
@@ -903,8 +899,10 @@ export interface ConflictData {
 }
 
 .datasets-subtitle {
-  max-width: 820px;
+  width: 100%;
+  max-width: 900px;
   margin: 1.5rem 0 0;
+
   color: #505050;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.35rem;
@@ -1217,6 +1215,10 @@ p {
   font-size: 0.86rem;
 }
 
+.datasets-page {
+  width: 100%;
+}
+
 @media (max-width: 760px) {
   .research-overview {
     padding: 3rem 1.25rem 5rem;
@@ -1275,6 +1277,19 @@ p {
 .inline-link:focus-visible {
   color: #193a50;
   text-decoration-thickness: 2px;
+}
+  .datasets-content {
+  width: min(100% - 2rem, 1100px);
+  padding: 3rem 0 5rem;
+}
+
+.datasets-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.datasets-subtitle {
+  max-width: none;
 }
     }
   `]
