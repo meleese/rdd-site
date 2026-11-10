@@ -95,7 +95,8 @@ app-navbar {
   min-width: 0;
 }
 
-.site-footer {
+.site-footer.home-footer,
+.page-wrapper.standard + .site-footer {
   position: static;
   flex-shrink: 0;
   width: 100%;
@@ -209,6 +210,36 @@ figcaption {
   justify-content: space-between;
   gap: 1rem;
 }
+
+
+
+/* About page */
+.page-wrapper.standard {
+  width: calc(100% - 72px);
+  max-width: none;
+  margin: 0 auto;
+  min-height: calc(100vh - 90px);
+  background: #ffffff;
+}
+
+.page-wrapper.standard .content,
+.page-wrapper.standard .content-inner {
+  width: 100%;
+  min-height: 100%;
+  background: #ffffff;
+}
+
+.page-wrapper.standard + .site-footer {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .page-wrapper.standard {
+    width: 100%;
+  }
+}
+
+
 
 @media (max-width: 760px) {
   .footer-inner {

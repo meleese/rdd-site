@@ -256,7 +256,7 @@ export class CitationPopoutComponent {
   copied = false;
 
   readonly citation =
-    'Refugee Discourse Database. https://refugeediscoursedatabase.com';
+    'Refugee Discourse Database. https://refugeediscoursedatabase.org';
 
   toggle(): void {
     this.isOpen = !this.isOpen;

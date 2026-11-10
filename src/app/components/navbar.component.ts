@@ -4,7 +4,8 @@ type AppView =
   | 'home'
   | 'datasets'
   | 'overview'
-  | 'timeline';
+  | 'timeline'
+  | 'about';
 
 @Component({
   selector: 'app-navbar',
@@ -89,6 +90,13 @@ type AppView =
         (click)="selectView('timeline')"
       >
         Timeline
+      </button>
+
+      <button
+        [class.active]="currentView === 'about'"
+        (click)="selectView('about')"
+      >
+        About
       </button>
 
       <button

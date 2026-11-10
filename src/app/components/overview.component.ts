@@ -104,7 +104,7 @@ export type AppView =
                 </span>
 
                 <span class="figure-credit">
-                  Created by Meleese Bremer
+                  By M. Bremer
                 </span>
               </figcaption>
             </figure>
@@ -153,7 +153,7 @@ export type AppView =
                 </span>
 
                 <span class="figure-credit">
-                  Created by Meleese Bremer
+                  By M. Bremer
                 </span>
               </figcaption>
             </figure>
