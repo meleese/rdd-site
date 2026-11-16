@@ -173,6 +173,30 @@ app-navbar {
   text-decoration: none;
 }
 
+.footer-privacy-link {
+  display: inline;
+  width: auto;
+  padding: 0;
+  margin: 0;
+
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.footer-privacy-link:hover {
+  text-decoration: underline;
+}
+
 .map-credit {
   margin-top: 0.5rem;
   color: #999;

@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar.component';
-import {
-  HomeComponent,
-  type AppView
-} from './components/home.component';
+import { HomeComponent } from './components/home.component';
 import { AboutComponent } from './components/about.component';
+import { AccessComponent } from './components/access.componen';
+import { PrivacyComponent } from './components/privacy.coponent';
+
+export type AppView =
+  | 'home'
+  | 'datasets'
+  | 'overview'
+  | 'timeline'
+  | 'about'
+  | 'access'
+  | 'privacy';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +22,9 @@ import { AboutComponent } from './components/about.component';
   CommonModule,
   NavbarComponent,
   HomeComponent,
-  AboutComponent
+  AboutComponent,
+  AccessComponent,
+  PrivacyComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -30,7 +40,7 @@ setActiveView(view: AppView): void {
 
 setView(view: AppView): void {
   if (view === 'home') {
-    const comingFromAbout = this.currentView === 'about';
+    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy';
 
     this.currentView = 'home';
 
@@ -53,7 +63,7 @@ setView(view: AppView): void {
     view === 'overview' ||
     view === 'timeline'
   ) {
-    const comingFromAbout = this.currentView === 'about';
+    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy';
 
     if (comingFromAbout) {
       this.currentView = 'home';

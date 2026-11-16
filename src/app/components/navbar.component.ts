@@ -5,7 +5,9 @@ type AppView =
   | 'datasets'
   | 'overview'
   | 'timeline'
-  | 'about';
+  | 'about'
+  | 'access'
+  | 'privacy';
 
 @Component({
   selector: 'app-navbar',
@@ -104,6 +106,15 @@ type AppView =
         (click)="openLogin()"
       >
         Login
+      </button>
+      
+      <button
+        type="button"
+        class="access-cta"
+        [class.active]="currentView === 'access'"
+        (click)="selectView('access')"
+      >
+        Request Access
       </button>
     </div>
   </div>
@@ -320,11 +331,55 @@ type AppView =
     text-align: left;
   }
 }
+
+/* Request Access navigation CTA */
+
+.links button.access-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--primary);
+  border-radius: 3px;
+
+  background: var(--primary);
+  color: #fff;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.links button.access-cta:hover,
+.links button.access-cta.active {
+  background: #193a50;
+  border-color: #193a50;
+  color: #fff;
+}
+
+.links button.access-cta span {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media (max-width: 760px) {
+  .links button.access-cta {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 0.9rem;
+  }
+}
   `]
 })
 export class NavbarComponent {
-  @Input() currentView!: 'home' | 'overview' | 'timeline' | 'about' | 'datasets';
-  @Output() navigate = new EventEmitter<'home' | 'overview' | 'timeline' | 'about' | 'datasets'>();
+@Input() currentView!: AppView;
+
+@Output() navigate = new EventEmitter<AppView>();
   menuOpen = false;
 
   selectView(view: AppView): void {

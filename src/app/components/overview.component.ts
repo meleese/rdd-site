@@ -6,7 +6,9 @@ export type AppView =
   | 'datasets'
   | 'overview'
   | 'timeline'
-  | 'about';
+  | 'about'
+  | 'access'
+  | 'privacy';
 
 @Component({
   selector: 'app-overview',

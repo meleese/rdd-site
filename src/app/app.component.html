@@ -6,8 +6,8 @@
 
   <div
     class="page-wrapper"
-    [class.home]="currentView !== 'about'"
-    [class.standard]="currentView === 'about'">
+    [class.home]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'"
+    [class.standard]="currentView === 'about' || currentView === 'access' || currentView === 'privacy'">
 
     <div
       class="content"
@@ -16,7 +16,7 @@
       <div class="content-inner">
 
         <app-home
-          *ngIf="currentView !== 'about'"
+          *ngIf="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'"
           (navigate)="setView($event)"
           (activeSectionChange)="setActiveView($event)">
         </app-home>
@@ -25,17 +25,25 @@
           *ngIf="currentView === 'about'">
         </app-about>
 
+        <app-access
+          *ngIf="currentView === 'access'" (navigate)="setView($event)">
+        </app-access>
+
+        <app-privacy
+          *ngIf="currentView === 'privacy'">
+        </app-privacy>
+
       </div>
     </div>
   </div>
 
   <footer
     class="site-footer"
-    [class.home-footer]="currentView !== 'about'">
+    [class.home-footer]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'">
 
     <div class="footer-inner">
       <div class="footer-left">
-        © 2026 Danilo Mandić | Meleese Bremer | Refugee Discourse Database. | All rights reserved.
+        © 2026 Danilo Mandić | Meleese Bremer | Refugee Discourse Database | All rights reserved
       </div>
 
       <div class="footer-meta">
@@ -50,8 +58,15 @@
         <a
           href="mailto:inquiries@refugeediscoursedatabase.org?subject=Refugee%20Discourse%20Database%20Inquiry">
           <i class="fa-solid fa-envelope"></i>
-          Contact Us
+          Contact Us |
         </a>
+      <button
+        type="button"
+        class="footer-privacy-link"
+        (click)="setView('privacy')"
+      >
+        Privacy Policy
+      </button>
       </div>
     </div>
   </footer>
