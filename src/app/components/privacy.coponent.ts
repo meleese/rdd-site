@@ -6,7 +6,8 @@ export type AppView =
   | 'about'
   | 'timeline'
   | 'access'
-  | 'privacy';
+  | 'privacy'
+  | 'media';
 @Component({
   selector: 'app-privacy',
   standalone: true,

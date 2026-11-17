@@ -6,8 +6,8 @@
 
   <div
     class="page-wrapper"
-    [class.home]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'"
-    [class.standard]="currentView === 'about' || currentView === 'access' || currentView === 'privacy'">
+    [class.home]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy' && currentView !== 'media'"
+    [class.standard]="currentView === 'about' || currentView === 'access' || currentView === 'privacy' || currentView === 'media'">
 
     <div
       class="content"
@@ -16,7 +16,7 @@
       <div class="content-inner">
 
         <app-home
-          *ngIf="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'"
+          *ngIf="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy' && currentView !== 'media'"
           (navigate)="setView($event)"
           (activeSectionChange)="setActiveView($event)">
         </app-home>
@@ -33,13 +33,17 @@
           *ngIf="currentView === 'privacy'">
         </app-privacy>
 
+        <app-media
+          *ngIf="currentView === 'media'">
+        </app-media>
+
       </div>
     </div>
   </div>
 
   <footer
     class="site-footer"
-    [class.home-footer]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy'">
+    [class.home-footer]="currentView !== 'about' && currentView !== 'access' && currentView !== 'privacy' && currentView !== 'media'">
 
     <div class="footer-inner">
       <div class="footer-left">

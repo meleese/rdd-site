@@ -7,7 +7,8 @@ type AppView =
   | 'timeline'
   | 'about'
   | 'access'
-  | 'privacy';
+  | 'privacy'
+  | 'media';
 
 @Component({
   selector: 'app-navbar',
@@ -107,6 +108,13 @@ type AppView =
         (click)="selectView('about')"
       >
         About
+      </button>
+
+      <button
+        [class.active]="currentView === 'media'"
+        (click)="selectView('media')"
+      >
+        Media & Outreach
       </button>
 
       <button

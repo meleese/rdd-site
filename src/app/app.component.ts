@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home.component';
 import { AboutComponent } from './components/about.component';
 import { AccessComponent } from './components/access.componen';
 import { PrivacyComponent } from './components/privacy.coponent';
+import { MediaComponent } from './components/media.component';
 
 export type AppView =
   | 'home'
@@ -13,7 +14,8 @@ export type AppView =
   | 'timeline'
   | 'about'
   | 'access'
-  | 'privacy';
+  | 'privacy'
+  | 'media';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,8 @@ export type AppView =
   HomeComponent,
   AboutComponent,
   AccessComponent,
-  PrivacyComponent
+  PrivacyComponent,
+  MediaComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -40,7 +43,7 @@ setActiveView(view: AppView): void {
 
 setView(view: AppView): void {
   if (view === 'home') {
-    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy';
+    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy' || this.currentView === 'media';
 
     this.currentView = 'home';
 
@@ -63,7 +66,7 @@ setView(view: AppView): void {
     view === 'overview' ||
     view === 'timeline'
   ) {
-    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy';
+    const comingFromAbout = this.currentView === 'about' || this.currentView === 'access' || this.currentView === 'privacy' || this.currentView === 'media';
 
     if (comingFromAbout) {
       this.currentView = 'home';

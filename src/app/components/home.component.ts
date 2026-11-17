@@ -15,7 +15,8 @@ export type AppView =
   | 'timeline'
   | 'about'
   | 'access'
-  | 'privacy';
+  | 'privacy'
+  | 'media';
 
 type HomeSection = 'home' | 'datasets' | 'overview' | 'timeline';
 
