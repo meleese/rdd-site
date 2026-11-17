@@ -201,8 +201,15 @@ article {
 
 @media (max-width: 700px) {
   .about-book-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 2rem;
+  }
+
+  .about-description {
+    width: 100%;
+    min-width: 0;
   }
 
   .book-cover-link {
@@ -218,7 +225,7 @@ article {
   }
 
   .research-about {
-    padding: 3rem 1.25rem 5rem;
+    padding: 3rem 1rem 5rem;
   }
 
   .article-header {
@@ -227,6 +234,17 @@ article {
 
   .article-header h1 {
     font-size: clamp(2.4rem, 11vw, 3.25rem);
+  }
+}
+
+@media (max-width: 760px) {
+  article,
+  .article-header,
+  .article-body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 }
 

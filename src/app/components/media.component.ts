@@ -178,7 +178,7 @@ article {
   }
 
   .research-media {
-    padding: 3rem 1.25rem 5rem;
+    padding: 3rem 1rem 5rem;
   }
 
   .article-header {
@@ -261,6 +261,7 @@ article {
   font-size: 1.05rem;
   font-weight: 400;
   color: #334f61;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 700px) {
@@ -294,6 +295,17 @@ article {
   font-size: 1.05rem;
   font-style: italic;
   color: #59636b;
+}
+
+@media (max-width: 760px) {
+    article,
+    .article-header,
+    .article-body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
 }
 
   `],
