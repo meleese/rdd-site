@@ -6,10 +6,11 @@ import {
   NgZone,
   ChangeDetectorRef,
   EventEmitter,
-  Output
+  Output,
+  ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { finalize } from 'rxjs';
 
@@ -106,6 +107,7 @@ type ReferralSource =
                     id="firstName"
                     type="text"
                     name="firstName"
+                    autocomplete="given-name"
                     [(ngModel)]="form.firstName"
                     placeholder="First name"
                     required
@@ -118,6 +120,7 @@ type ReferralSource =
                     id="lastName"
                     type="text"
                     name="lastName"
+                    autocomplete="family-name"
                     [(ngModel)]="form.lastName"
                     placeholder="Last name"
                     required
@@ -131,6 +134,7 @@ type ReferralSource =
                       id="email"
                       name="email"
                       type="email"
+                      autocomplete="email"
                       [(ngModel)]="form.email"
                       required
                       email
@@ -204,7 +208,7 @@ type ReferralSource =
                 class="submit-button"
                 [disabled]="submitting"
                 [class.form-incomplete]="requestForm.invalid || !turnstileToken"
-                (click)="showValidationHint = true"
+                (click)="syncAutofill(); showValidationHint = true"
                 >
                 {{ submitting ? 'Submitting...' : 'Submit Access Request' }}
                 <span aria-hidden="true">→</span>
@@ -549,6 +553,26 @@ export class AccessComponent implements AfterViewInit, OnDestroy {
         event.preventDefault();
         this.navigate.emit('privacy');
         }
+
+    @ViewChild('requestForm') requestForm?: NgForm;
+
+    syncAutofill(): void {
+    const fields = [
+        'firstName',
+        'lastName',
+        'email',
+        'organization'
+    ] as const;
+
+    for (const name of fields) {
+        const input = document.getElementById(name) as HTMLInputElement | null;
+
+        if (input && input.value !== this.form[name]) {
+        this.form[name] = input.value;
+        this.requestForm?.controls[name]?.setValue(input.value);
+        }
+    }
+    }
 
   referralSources: Exclude<ReferralSource, ''>[] = [
     'Internet Search',
