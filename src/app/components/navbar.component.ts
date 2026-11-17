@@ -31,6 +31,7 @@ type AppView =
       </div>
     </div>
 
+  <div class="mobile-actions">
     <button
       type="button"
       class="menu-toggle"
@@ -38,10 +39,7 @@ type AppView =
       [attr.aria-expanded]="menuOpen"
       (click)="menuOpen = !menuOpen"
     >
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
         @if (!menuOpen) {
           <path
             d="M4 7h16M4 12h16M4 17h16"
@@ -61,6 +59,16 @@ type AppView =
         }
       </svg>
     </button>
+
+    <button
+      type="button"
+      class="mobile-access-cta"
+      [class.active]="currentView === 'access'"
+      (click)="selectView('access')"
+    >
+      Request Access
+    </button>
+  </div>
 
     <div
       class="links"
@@ -332,8 +340,6 @@ type AppView =
   }
 }
 
-/* Request Access navigation CTA */
-
 .links button.access-cta {
   display: inline-flex;
   align-items: center;
@@ -372,6 +378,83 @@ type AppView =
     width: 100%;
     justify-content: space-between;
     padding: 0.75rem 0.9rem;
+  }
+}
+
+.mobile-actions {
+  display: none;
+}
+
+@media (max-width: 760px) {
+
+  .nav {
+    padding: 0.65rem 1.25rem;
+  }
+
+  .nav-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    grid-column: 1;
+    justify-self: start;
+    min-width: 0;
+  }
+
+  .logo .text {
+    font-size: 0.85rem;
+  }
+
+  .mobile-actions {
+    display: contents;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    grid-column: 2;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .mobile-access-cta {
+    display: inline-flex;
+    grid-column: 3;
+    justify-self: end;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.65rem 0.7rem;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+
+    background: var(--primary);
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .mobile-access-cta:hover,
+  .mobile-access-cta.active {
+    background: #193a50;
+    border-color: #193a50;
+  }
+
+  .links button.access-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .logo {
+    transform: translateY(4px);
   }
 }
   `]
